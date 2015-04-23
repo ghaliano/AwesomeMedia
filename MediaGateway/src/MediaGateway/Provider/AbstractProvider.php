@@ -4,6 +4,7 @@ namespace MediaGateway\Provider;
 
 use MediaGateway\MediaItemNormalizerInterface;
 use MediaGateway\MediaProviderInterface;
+use MediaGateway\Query;
 
 abstract class AbstractProvider implements MediaProviderInterface
 {
@@ -35,4 +36,20 @@ abstract class AbstractProvider implements MediaProviderInterface
 
         return str_replace('Provider', '', end($class));
     }
+    
+    /**
+     * Search Media
+     * 
+     * @param  Query      $query
+     * @return array
+     */
+    abstract public function search(Query $query);
+    
+    /**
+     * Build Query
+     * 
+     * @param  Query      $query
+     * @return string
+     */    
+    abstract public function buildQuery(Query $query);
 }
